@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>FeatureTable - Custom Menu Items</title>
+    <link rel="stylesheet" href="http://112.4.212.98:8028/arcgis_js_api/library/3.22/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://112.4.212.98:8028/arcgis_js_api/library/3.22/esri/css/esri.css">
+    <script type="text/javascript" src = "http://112.4.212.98:8028/arcgis_js_api/library/3.22/init.js">  </script>
+
+    <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .esriSimpleSliderTL{
+        	top: 100px!important;
+        }
+        .header-edit{
+        	background-color: #4d4c4c;
+        	width: 100%;
+        	position: absolute;
+        	top: 0;
+        	height: 50px;
+        	z-index:2;
+        }
+        /*.header-edit img{
+        	position: absolute;
+        	right: 10px;
+        	width: 28px;
+        	height: 28px;
+        	top: 10px;
+        	cursor: pointer;
+        }*/
+        .header-edit p{
+        	position: absolute;
+        	left: 35px;
+        	top: 0;
+        	font-size: 18px;
+        	line-height: 15px;
+        	color: white;
+        }
+        #edit_img{
+        	position: relative;
+        	top: 16px;
+        	left: 10px;
+        }
+    </style>
+
+    <script>
+        require([
+            "esri/layers/FeatureLayer",
+            "esri/layers/ArcGISTiledMapServiceLayer",
+            "esri/dijit/FeatureTable",
+            "esri/geometry/Extent",
+            "esri/geometry/Point",
+            "esri/graphicsUtils",
+            "esri/tasks/query",
+            "esri/tasks/QueryTask",
+            "esri/symbols/SimpleLineSymbol",
+            "esri/symbols/SimpleFillSymbol",
+            "esri/map",
+            "dojo/dom",
+            "dojo/query",
+            "dojo/parser",
+            "dojo/ready",
+            "dojo/on",
+            "dijit/layout/ContentPane",
+            "dijit/layout/BorderContainer"
+        ], function (
+            FeatureLayer, ArcGISTiledMapServiceLayer, FeatureTable, Extent, Point, graphicsUtils, Query, QueryTask, SimpleLineSymbol,
+            SimpleFillSymbol, Map, dom, query, parser, ready, on, ContentPane, BorderContainer
+        ) {
+            parser.parse();
+
+				var geoArray;
+                var myFeatureTable;
+				var baseUrl = "http://112.4.212.98:6080/arcgis/rest/services/KFQ/GYYD/FeatureServer/0";
+                var myFeatureLayer = new FeatureLayer(baseUrl, {
+                    mode: FeatureLayer.MODE_ONDEMAND,
+                    outFields:["*"],
+                    visible: true,
+                    id: "fLayer2"
+                });
+                var map = new Map("map",{
+                    center: [119.5,31.6],
+                    extent: new Extent({xmax: 119.79, xmin: 119.26,
+                        ymax: 31.89, ymin: 31.51,
+                        //"spatialReference":{"wkid":102100,"latestWkid":3857}
+                    }),
+                    logo:false
+                });
+                var basemap = new ArcGISTiledMapServiceLayer("http://112.4.212.98:6080/arcgis/rest/services/KFQ/BaseMap/MapServer");
+                map.addLayer(basemap);
+
+                function mapQuery(){
+                    map.graphics.clear();
+                    //获得用户点击的地图坐标
+                    var query=new Query();
+                    var queryTask = new QueryTask(baseUrl);
+                    query.outSpatialReference = map.spatialReference;
+                    query.spatialRelationship = Query.SPATIAL_REL_INTERSECTS;
+                    query.returnGeometry = true;
+                    query.outFields = ["*"];
+                    query.where = " 1 = 1";
+                    queryTask.execute(query, function (results) {
+						var len = results.features.length;
+						geoArray = new Array();
+						if (len >=1){
+						    for (var i = 0; i< len; i ++){
+						        geoArray[i] = results.features[i];
+							}
+						}
+                    });
+                }
+                map.on("load", loadTable);
+                map.on("load", mapQuery);
+            myFeatureTable = new FeatureTable({
+                featureLayer : myFeatureLayer,
+                outFields: ["YDDW","SFGSQY", "JYDJ", "CZJY", "JYLX", "YDLX", "QSXZ", "SZXZ", "SZC", "CYLB",
+                    "HYLB", "TDZL", "JSZK", "CLSJ","CLMJ", "JZMJ", "JZJD", "RJL", "JZMD", "GDZCTZ",
+                    "DJGDZCTZ", "ZCZ", "DJCZ", "ZXSSL", "DJXSSL", "LKSS", "MJSS", "KGSJ", "JGSJ", "YDL", "YSL",
+                    "YQL", "WRPFL", "SZYQ"],
+                map : map,
+                editable: true,
+                showAttachments:false,
+                syncSelection: true,            //map与table是否交互
+                dateOptions: {
+                    datePattern: 'MMM/d/y',
+                    timeEnabled: false,       //是否显示时间
+                    //timePattern: 'H:mm',      //显示的时间格式
+                },
+
+            }, 'myTableNode');
+                myFeatureTable.on("row-select", function (evt) {
+                    var row = myFeatureTable.selectedRows;
+                    var row0 = row[0];
+                    var id = row0.OBJECTID;
+
+                    var len = geoArray.length;
+                    for (var i = 0; i < len; i++) {
+                        var geo = geoArray[i];
+                        if (geo.attributes["OBJECTID"] == id)
+                        {
+                            //重新设置定位位置，位置较重心上移250，使图形和弹窗均显示在地图正中央
+                            var pt = new Point(geo.geometry.getCentroid().x, geo.geometry.getCentroid().y - 250, map.spatialReference);
+                            map.centerAndZoom(pt, 4);
+                        }
+                    }
+                });
+                function loadTable(){
+
+                    // set a selection symbol for the featurelayer
+                    var selectionSymbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+                        new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 128, 238]), 2), new dojo.Color([238, 99, 99, 0.55]));
+
+                    myFeatureLayer.setSelectionSymbol(selectionSymbol);
+
+                    myFeatureLayer.on("click", function(evt) {
+                        var idProperty = myFeatureLayer.objectIdField,
+                            feature,
+                            featureId,
+                            query;
+
+                        if (evt.graphic && evt.graphic.attributes && evt.graphic.attributes[idProperty]) {
+                            feature = evt.graphic,
+                                featureId = feature.attributes[idProperty];
+
+                            query = new Query();
+                            query.returnGeometry = false;
+                            query.objectIds = [featureId];
+                            query.where = "1=1";
+
+                            myFeatureLayer.selectFeatures(query, FeatureLayer.SELECTION_NEW);
+                        }
+                    });
+                    map.addLayer(myFeatureLayer);
+
+                    //create new FeatureTable and set its properties
+
+
+                    myFeatureTable.startup();
+
+                    // listen to refresh event
+                    myFeatureTable.on("refresh", function(evt){
+                        console.log("refresh event - ", evt);
+                    });
+                }
+
+
+        });
+    function Quit(){
+        alert("关闭");
+    }
+    </script>
+</head>
+
+<body class="claro esri">
+	<div class="header-edit">
+		<img src="img/edit.png" id="edit_img"/>
+		<p style="font-family: '微软雅黑';">编辑</p>
+		<!--<img src="img/quit.png" onclick="Quit()" />-->
+	</div>
+	<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline'" style="width:100%; height:100%;">
+    	<div id="mapContainer" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:true" style="height:60%">
+           	<div id="map"></div>
+    	</div>
+    	<div id="bot" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom', splitter:true" style="height:40%;">
+        	<div id="myTableNode"></div>
+    	</div>
+	</div>
+</body>
+</html>

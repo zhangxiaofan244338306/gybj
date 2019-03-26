@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>uploadExcel</title>
+		<style>
+			
+			.costs-marl15 {
+				margin-left: 15px;
+			}
+			
+			.costs-uploadfile-div {
+				position: relative;
+			}
+			
+			#textfield {
+				width: 200px;
+				height: 30px;
+    			line-height: 30px;
+			}
+			
+			#uploaderInput {
+				width: 310px;
+				height: 40px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				cursor: pointer;
+			}
+			
+			.allBtn1 {
+				display: inline-block;
+				width: 80px;
+				height: 35px;
+				line-height: 35px;
+				padding: 0 10px;
+				background-color: #008cf5;
+				color: #fff;
+				white-space: nowrap;
+				text-align: center;
+				font-size: 14px;
+				border: none;
+				border-radius: 2px;
+				cursor: pointer;
+			}
+			
+			.allBtn2 {
+				display: inline-block;
+				width: 80px;
+				height: 35px;
+				line-height: 35px;
+				padding: 0 10px;
+				background-color: #009688;
+				color: #fff;
+				white-space: nowrap;
+				text-align: center;
+				font-size: 14px;
+				border: none;
+				border-radius: 2px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body style="position: relative;margin-top: 80px;">
+		<div class="costs-uploadfile-div">
+			<input type="file" id="uploaderInput" onchange="document.getElementById('textfield').value=this.value" />
+			<input type='text' id="textfield" />
+			<button class="allBtn1 costs-marl15">选择文件</button>
+			<button class="allBtn2 costs-marl15" onclick="upload()">上传</button>
+		</div>
+		<!--<input type="file" id="uploaderInput" />-->
+		<!--<button onclick="upload()">提交</button>-->
+	</body>
+
+	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="js/system.js"></script>
+	<script type="text/javascript">
+		function upload() {
+			var fileform = new FormData();
+			var length = $("#uploaderInput")[0].files.length;
+			if(length == 0) {
+				alert("请上传文件");
+				return;
+			}
+			for(var i = 0; i < length; i++) {
+				fileform.append("file" + i, $("#uploaderInput")[0].files[i]);
+			}
+
+			$.ajax({
+				url: baseUrl + "api/excel/uploadExcel",
+				type: "post",
+				data: fileform,
+				processData: false, // 告诉jQuery不要去处理发送的数据
+				contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+				success: function(result) {
+					if(result.res == "OK") {
+						alert("上传成功");
+					} else {
+						alert("上传失败");
+					}
+				}
+			});
+		}
+	</script>
+
+</html>

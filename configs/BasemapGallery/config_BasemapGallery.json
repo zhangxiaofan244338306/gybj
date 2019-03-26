@@ -1,0 +1,31 @@
+{
+  "basemapGallery": {
+    "mode": 2,
+    "basemaps": [
+      {
+        "title": "高邮影像图",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/thumbnailUrl_4.png",
+        "layers": [
+          {
+            "url": "http://61.177.187.244:8022/ArcGIS/rest/services/GYYX2016/MapServer"
+          }
+        ],
+        "spatialReference": {
+          "wkid": 4326
+        }
+      },
+      {
+        "title": "高邮市区交通矢量图",
+        "layers": [
+          {
+            "url": "http://yfbserver1:6080/arcgis/rest/services/GYBJ/SQJTMap/MapServer"
+          }
+        ],
+        "spatialReference": {
+          "wkid": 4326
+        },
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/thumbnailUrl_5.jpeg"
+      }
+    ]
+  }
+}

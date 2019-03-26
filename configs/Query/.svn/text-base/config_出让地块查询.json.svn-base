@@ -1,0 +1,269 @@
+{
+  "hideLayersAfterWidgetClosed": true,
+  "labelTasks": "查询条件",
+  "labelResults": "查询结果",
+  "queries": [
+    {
+      "url": "http://112.4.212.98:6081/arcgis/rest/services/GYBJ/DK/MapServer/0",
+      "name": "出让地块查询",
+      "icon": "",
+      "filter": {
+        "logicalOperator": "AND",
+        "parts": [
+          {
+            "fieldObj": {
+              "name": "DKNF",
+              "label": "DKNF",
+              "shortType": "string",
+              "type": "esriFieldTypeString"
+            },
+            "operator": "stringOperatorIs",
+            "valueObj": {
+              "isValid": true,
+              "type": "value",
+              "value": ""
+            },
+            "interactiveObj": {
+              "prompt": "请输入地块年份",
+              "hint": "",
+              "cascade": "none"
+            },
+            "caseSensitive": false
+          },
+          {
+            "fieldObj": {
+              "name": "DKBH",
+              "label": "DKBH",
+              "shortType": "string",
+              "type": "esriFieldTypeString"
+            },
+            "operator": "stringOperatorContains",
+            "valueObj": {
+              "isValid": true,
+              "type": "value",
+              "value": ""
+            },
+            "interactiveObj": {
+              "prompt": "请输入地块编号",
+              "hint": "",
+              "cascade": "none"
+            },
+            "caseSensitive": false
+          },
+          {
+            "fieldObj": {
+              "name": "DKWZ",
+              "label": "DKWZ",
+              "shortType": "string",
+              "type": "esriFieldTypeString"
+            },
+            "operator": "stringOperatorContains",
+            "valueObj": {
+              "isValid": true,
+              "type": "value",
+              "value": ""
+            },
+            "interactiveObj": {
+              "prompt": "请输入地块位置",
+              "hint": "",
+              "cascade": "none"
+            },
+            "caseSensitive": false
+          }
+        ],
+        "expr": ""
+      },
+      "showSQL": true,
+      "spatialFilter": {
+        "currentMapExtent": null,
+        "drawing": null,
+        "useFeatures": null,
+        "fullLayerExtent": null
+      },
+      "popupInfo": {
+        "title": "{DKBH}",
+        "fieldInfos": [
+          {
+            "fieldName": "OBJECTID",
+            "label": "OBJECTID",
+            "tooltip": "",
+            "visible": false,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "DKNF",
+            "label": "地块年份",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "DKBH",
+            "label": "地块编号",
+            "tooltip": "",
+            "visible": false,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "DKWZ",
+            "label": "地块位置",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "QSJ",
+            "label": "起始价",
+            "tooltip": "",
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            },
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "CJJ",
+            "label": "成交价",
+            "tooltip": "",
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            },
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "JDR",
+            "label": "竞得人",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "YT",
+            "label": "地块 用途",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "RJL",
+            "label": "容积率",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "JZMD",
+            "label": "建筑密度",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "LDL",
+            "label": "绿地率",
+            "tooltip": "",
+            "visible": true,
+            "format": null,
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "CRMJ",
+            "label": "出让面积",
+            "tooltip": "",
+            "visible": true,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            },
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "CJRQ",
+            "label": "成交日期",
+            "tooltip": "",
+            "visible": true,
+            "format": {
+              "dateFormat": "longMonthDayYear"
+            },
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "HTQDRQ",
+            "label": "合同签订日期",
+            "tooltip": "",
+            "visible": true,
+            "format": {
+              "dateFormat": "longMonthDayYear"
+            },
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "Shape.STArea()",
+            "label": "Shape.STArea()",
+            "tooltip": "",
+            "visible": false,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            },
+            "stringFieldOption": "textbox"
+          },
+          {
+            "fieldName": "Shape.STLength()",
+            "label": "Shape.STLength()",
+            "tooltip": "",
+            "visible": false,
+            "format": {
+              "places": 2,
+              "digitSeparator": true
+            },
+            "stringFieldOption": "textbox"
+          }
+        ],
+        "description": null,
+        "showAttachments": false,
+        "mediaInfos": [],
+        "readFromWebMap": false
+      },
+      "orderByFields": [],
+      "useLayerSymbol": false,
+      "resultsSymbol": {
+        "color": [
+          155,
+          187,
+          89,
+          128
+        ],
+        "outline": {
+          "color": [
+            115,
+            140,
+            61,
+            255
+          ],
+          "width": 1.5,
+          "type": "esriSLS",
+          "style": "esriSLSSolid"
+        },
+        "type": "esriSFS",
+        "style": "esriSFSSolid"
+      },
+      "canModifySymbol": false,
+      "keepResultsOnMapAfterCloseWidget": true,
+      "enableExport": false,
+      "singleResultLayer": true,
+      "webMapLayerId": "1528186980217r2673683015544792_0"
+    }
+  ]
+}

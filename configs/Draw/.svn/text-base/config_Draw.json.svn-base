@@ -1,0 +1,19 @@
+{
+  "distanceUnits": [
+    {
+      "unit": "METERS",
+      "abbr": "m"
+    }
+  ],
+  "areaUnits": [
+    {
+      "unit": "HECTARES",
+      "abbr": "ha"
+    },
+    {
+      "unit": "SQUARE_METERS",
+      "abbr": "sq m"
+    }
+  ],
+  "isOperationalLayer": false
+}

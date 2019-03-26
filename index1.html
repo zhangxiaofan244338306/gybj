@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+		<title>高邮市土地出让比价分析决策系统</title>
+		<link rel="shortcut icon" href="images/shortcut.ico">
+		<!--[if IE 8]>
+    <link rel="stylesheet" type="text/css"  href="jimu.js/css/jimu-ie.css" />
+    <![endif]-->
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+			}
+			
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				font-family: "微软雅黑";
+			}
+			
+			.navbar {
+				background-color: #1A95CE;
+				width: 100%;
+				height: 60px;
+				position: absolute;
+				z-index: 1;
+				/*opacity: 0.9;*/
+			}
+			
+			.navbar-form {
+				position: absolute;
+				height: 60px;
+				width: 100%;
+				z-index: 2;
+			}
+			
+			#TOP_MENU_CONTAINER {
+				list-style: none;
+				cursor: pointer;
+				position: absolute;
+				text-align: center;
+				right: 0;
+			}
+			
+			#TOP_MENU_CONTAINER li {
+				position: relative;
+				width: 100px;
+				height: 48px;
+				color: #FFFFFF;
+				border-right: 1px solid #a5a5a5;
+				text-align: center;
+				line-height: 18px;
+				float: left;
+				top: -9px;
+				font-size: 14px;
+			}
+			
+			#TOP_MENU_CONTAINER a {
+				text-decoration: none;
+				out-line: none;
+				color: #FFFFFF;
+			}
+			
+			#TOP_MENU_CONTAINER a:active {
+				color: rgba(52, 97, 173, 1);
+			}
+			
+			.f-menu-icon {
+				width: 30px;
+				height: 30px;
+				display: block;
+				position: relative;
+				left: 34px;
+				text-align: center;
+			}
+			
+			.myiframe {
+				position: relative;
+				/*margin-top: 60px;*/
+			}
+		</style>
+
+	</head>
+
+	<body class="claro jimu-main-font">
+
+		<div id="main-page">
+			<div class="navbar">
+				<div class="nav-header">
+					<!--<img src="images/name.png" />-->
+				</div>
+			</div>
+
+			<div class="navbar-form">
+				<ul id="TOP_MENU_CONTAINER" style="width: 445px;">
+					<li class="f-menu">
+						<a href="index.html" target="a1"><img class="f-menu-icon" src="img/home.png">主页</a>
+					</li>
+					<li class="f-menu">
+						<a href="uploadExcel.html" target="a1"><img class="f-menu-icon" src="img/in.png">数据导入</a>
+					</li>
+					<li class="f-menu">
+						<a href="index.html" target="a1"><img class="f-menu-icon" src="img/out.png">数据导出 </a>
+					</li>
+					<li class="f-menu">
+						<a href="userManager.html" target="a1"><img class="f-menu-icon" src="img/admin.png">用户管理</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div id="jimu-layout-manager"></div>
+			
+			<iframe class="myiframe" name="a1" width="100%" height="100%" frameborder="no" src="index.html"></iframe>
+		</div>
+
+	</body>
+	
+
+	</html>

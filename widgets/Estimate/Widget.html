@@ -1,0 +1,239 @@
+<div style="padding: 20px 10px;padding-top: 1px;">
+	<div id="loadingPage">
+		<div></div>
+	</div>
+	<div style="display: block;position: absolute; width: 305px;margin-left: 10px;" id="panel1">
+		<div style="position: relative;left: 20px;">
+			<div style="width: 100%;height:20px;position: relative;font-size: 14px;top: -10px;">
+				<div style="float: left;width: 70%;">是否连同建筑物整体一并出让</div>
+				<div style="float: left;width: 30%;"><label class='checkbox'><input class="mui-switch"  id="selectBtton" value="1" type="checkbox" ><i></i></label></div>
+			</div>
+			<div id="buildingUnit" style="display:none; width: 100%;height:25px ;opacity:0;font-size: 14px;">
+				<div style="float: left;width: 52%;">请输入建筑物的总价格：</div>
+				<div id="buildingUnitValue" style="float: left;"><input id="input_jawzjValue" style="width: 40px;padding-left: 3px;" type="text">&nbsp&nbsp万元</div>
+				<div style="float: left;width: 16%;"></div>
+			</div>
+			<div id="aretable" style="font-size: 14px;font-weight: bold;font-family: monospace;height:34px;line-height: 34px;position: relative;top: 10px;left: -5px;">
+				<div>
+					<img src="widgets/Estimate/images/business.png" style="width: 40px;height: 40px;position: relative;top: 0;" />
+					<span style="color: #1d7907;">商服用地占比</span>
+				</div>
+				<div style="position: relative;top: -38px;left: 155px;"><input id="input_szzb" style="width: 50px;padding-left: 3px;" type="number"> % </div>
+			</div>
+			<!--<div><span>注：输入0表示纯住宅用地，输入"100"表示纯商服用地，其他数字表示商住混合用地</span></div>-->
+			<div id="aretableZZ" style="font-size: 14px;font-weight: bold;font-family: monospace;height: 34px;line-height: 34px;position: relative;top: 20px;left: -5px;">
+				<div>
+					<img src="widgets/Estimate/images/residence.png" style="width: 40px;height: 40px;position: relative;top: 0;" />
+					<span style="color: #0396b9;">住宅用地占比</span>
+				</div>
+				<div style="position: relative;top: -38px;left: 155px;"><input id="input_zszb" style="height: 20px; width: 50px;padding-left: 3px;border: #969696 1px solid;" type="number"> %</div>
+
+			</div>
+
+			<div>
+				<button id="user-defined" style="display:none;position:relative;top:50px;opacity:0;background:url(widgets/Select/images/dbxing.png)left center no-repeat;left:45px;height:35px;width:45%;line-height:35px;padding:0 18px;background-color:#ab5050;color:#fff;white-space:nowrap;text-align:center;font-size:14px;border:none;border-radius:3px;cursor:pointer;">点击勾选地块</button>
+			</div>
+		</div>
+		<div id="colorSelect1" style="display:none; position:relative;top: 80px;height: 100px;width: 100%; opacity:0;background-color: #fff;z-index: 2;font-family: unset;font-size: 16px;">
+			<div>
+				<div class="color_temp active_plot">
+					请填写实际容积率：
+				</div>
+				<div style="margin-top: 22px;left: 10px;" class="color_text"></div>
+			</div>
+			<div style="clear:both;height:0;overflow:hidden;"></div>
+			<div id="interestInfor" style="width: 100%;">
+				<div class="interst-information">
+					1.0
+				</div>
+				<div class="interst-information">
+					1.1
+				</div>
+				<div class="interst-information">
+					1.2
+				</div>
+				<div class="interst-information">
+					1.3
+				</div>
+				<div class="interst-information">
+					1.4
+				</div>
+				<div class="interst-information">
+					1.5
+				</div>
+				<div class="interst-information">
+					1.6
+				</div>
+				<div style="clear:both;height:0;overflow:hidden;"></div>
+				<div class="interst-information">
+					1.7
+				</div>
+				<div class="interst-information">
+					1.8
+				</div>
+				<div class="interst-information">
+					1.9
+				</div>
+				<div class="interst-information">
+					2.0
+				</div>
+				<div class="interst-information">
+					2.1
+				</div>
+				<div class="interst-information">
+					2.2
+				</div>
+				<div class="interst-information">
+					2.3
+				</div>
+				<div style="clear:both;height:0;overflow:hidden;"></div>
+				<div class="interst-information">
+					2.4
+				</div>
+				<div class="interst-information">
+					2.5
+				</div>
+				<div class="interst-information">
+					2.6
+				</div>
+				<div class="interst-information">
+					2.7
+				</div>
+				<div class="interst-information">
+					2.8
+				</div>
+				<div class="interst-information">
+					2.9
+				</div>
+				<div class="interst-information">
+					3.0
+				</div>
+				<div style="clear:both;height:0;overflow:hidden;"></div>
+			</div>
+			<div class="center_box" id="nextZH">
+				<div class="jimu-btn_ls">下一步</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="panel2" style="display: none;position: absolute;width: 100%;">
+		<div class="step-head-s">
+			<div class="results-title-sd">地价综合修正</div>
+			<div id="backOver" class="operations" style="height: 100%;position:absolute;">
+				<div class="params-back-ed">
+					<div class="icon-left-my"></div>
+					<div class="backTip">后退</div>
+				</div>
+			</div>
+		</div>
+		<div id="zhChiose" style="position: absolute;">
+			<div id="txt_xzys" style="font-size: 15px;font-weight: bold;margin-bottom: 10px;font-family: monospace;">宗地形状及可利用程度：</div>
+			<div id="sugtxtgestId-2" class="radios-boxes">
+				<div style="width: 90%;margin-left: 10%;">
+					<div class="select_box" id="div_a">
+						<div style="float: left"><label class="radio1"><input type="radio" name="radio-2" class="radio-select" id="radio12" value="1" style="outline: none;"><i></i></label></div>
+						<div style="float: left"><label for="radio12" class="label1">优</label></div>
+					</div>
+					<div class="select_box" id="div_b">
+						<div style="float: left"><label class="radio1"><input type="radio" name="radio-2" class="radio-select" id="radio23" value="0.5" style="outline: none;"><i></i></label></div>
+						<div style="float: left"><label for="radio23" class="label1">较优</label></div>
+					</div>
+					<div class="select_box" id="div_c">
+						<div style="float: left"><label class="radio1"><input type="radio" name="radio-2" class="radio-select" id="radio32" value="0" style="outline: none;" checked><i></i></label></div>
+						<div style="float: left"><label for="radio32" class="label1">一般</label></div>
+					</div>
+					<div class="select_box" id="div_d">
+						<div style="float: left"><label class="radio1"><input type="radio" name="radio-2" class="radio-select" id="radio42" value="-0.5" style="outline: none;"><i></i></label></div>
+						<div style="float: left"><label for="radio42" class="label1">较劣</label></div>
+					</div>
+					<div class="select_box" id="div_e">
+						<div style="float: left"><label class="radio1"><input type="radio" name="radio-2" class="radio-select" id="radio52" value="-1" style="outline: none;"><i></i></label></div>
+						<div style="float: left"><label for="radio52" class="label1">劣</label></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="position: absolute;top: 125px; width: 250px; left: 30px;" id="describe"></div>
+		<div style="margin-top: 125px;">
+			<button class="btn-affirm" id="btn_ok">确定</button>
+		</div>
+		<div id="dataTitle1" style="margin-top: 10px;display: none;font-size: 15px;font-weight: bold;">*点击表格可进行相应的修改</div>
+		<div id="dataTitle" style="width: 100%;height: 20px;margin-top: 2px;display:none;color:#8b091a;font-weight: bold; font-size: 12px;line-height: 20px;">
+			<div>影响因素</div>
+			<div>已选</div>
+			<div>修正系数(%)</div>
+			<div>权重(%)</div>
+		</div>
+		<div id="showSelection" class="showSelectionClass" style="overflow-y: auto;position: relative; height: 174px;width: 100%;">
+
+		</div>
+
+	</div>
+
+	<div id="panel3" style="display: none;">
+		<div class="step-head-s">
+			<div class="results-title-sd">估算结果</div>
+			<div id="backOver" class="operations" style="height: 100%;position:absolute;">
+			</div>
+		</div>
+
+		<div style="width: 100%;font-size: 14px;">
+			<div id="selctionChangeTitle">
+				<div>
+					影响因素
+				</div>
+				<div>已选</div>
+			</div>
+			<div id="selctionChange">
+
+			</div>
+			<div style="position: relative;top: 10px;">
+				<div style="color: rgb(139, 9, 26);">*拖动滑条可改变容积率 进行重新估算</div>
+				<div class="claro">
+					<div id="rule">
+						<ol data-dojo-type="dijit/form/HorizontalRuleLabels" data-dojo-props="
+            container: 'topDecoration',
+            style: 'height: 1.5em; color: #000000; margin: 0 12px;'">
+							<li>1.0</li>
+							<li>1.5</li>
+							<li>2.0</li>
+							<li>2.5</li>
+							<li>3.0</li>
+						</ol>
+
+					</div>
+				</div>
+				<span>当前容积率：</span>
+				<div id="ruleValue" style="display: inline;font-size: 15px;font-weight: bold;color: #dc0101;"></div>
+
+				<div class="center_box">
+					<div id="backOver1" class="btn-affirm" style=" padding: 9px 26px;">重新估算</div>
+					<div id="btn_nearby" class="btn-affirm" style=" padding: 9px 9px;">查看周边地价</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="panel4" style="display: none;">
+		<div class="step-head-s">
+			<div class="results-title-sd">周边比价</div>
+			<div id="back_bj" class="operations" style="height: 100%;position:absolute;">
+				<div class="params-back-ed">
+					<div class="icon-left-my"></div>
+					<div class="backTip">后退</div>
+				</div>
+			</div>
+			<div id="backOver" class="operations" style="height: 100%;position:absolute;">
+			</div>
+		</div>
+
+		
+	</div>
+	<div id="chart" style="position: absolute;top: 100px; width: 320px;height: 230px;z-index: -1000;">
+
+	</div>
+	<div id="huanchongAre">
+			<div style="font-size: 14px;font-weight: bold;">加载周边地价缓冲区</div>
+			<div><input class="mui-switch" id="checkeBoxHCQ" value="1" type="checkbox" checked></div>
+		</div>
+</div>

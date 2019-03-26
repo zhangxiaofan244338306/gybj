@@ -1,0 +1,52 @@
+<div class="list">
+	<div style="box-shadow: 5px 5px 5px #888888;">
+		<span style="font-size: 14px;font-weight: bold;color: #11548d;">基准地价图层</span>	
+		<table class="layer-table" style="width: 100%; height: 60%;line-height: 43px;" cellspacing="5" >
+		<tr style="background: white;">
+			<td><img src="widgets/LayerList/images/business.png" class="imgSize" /></td>
+			<td>商服基准地价</td>
+			<td><label><input class="mui-switch" id="checkeBoxSFDJ" value="1" type="checkbox" ></label></td>
+		</tr>
+		<tr>
+			<td><img src="widgets/LayerList/images/dwelling.png" class="imgSize" /></td>
+			<td>住宅基准地价</td>
+			<td><label><input class="mui-switch" id="checkeBoxZZDJ" value="1" type="checkbox" ></label></td>
+		</tr>
+		<tr style="background: white;">
+			<td><img src="widgets/LayerList/images/Indastry.png" class="imgSize" /></td>
+			<td>工业基准地价</td>
+			<td><label><input class="mui-switch" id="checkeBoxGYDJ" value="1" type="checkbox" ></label></td>
+		</tr>
+		</table>	
+	</div>
+	<div style="box-shadow: 5px 5px 5px #888888;position: relative;top: 20px;">
+		<span style="font-size: 14px;font-weight: bold;color: #11548d;">经营性用地图层</span>	
+		<table class="layer-table" style="width: 100%; height: 60%;line-height: 43px;" cellspacing="5">
+		<tr>
+			<td><img src="widgets/LayerList/images/tosell.png" class="imgSize" /></td>
+			<td style="width: 50%;">出让地块</td>
+			<td><label><input class="mui-switch" id="checkeBoxYDDW" value="1" type="checkbox" ></label></td>
+		</tr>
+		</table>
+		<div style="display: none;" id="Allcheckbox">
+		</div>
+		
+
+	</div>
+	<div style="box-shadow: 5px 5px 5px #888888;position: relative;top: 40px;margin-bottom: 20px;">
+		<span style="font-size: 14px;font-weight: bold;color: #11548d;">基础数据</span>	
+		<table class="layer-table" style="width: 100%; height: 60%;line-height: 43px;" cellspacing="5">
+		<tr style="background: white;">
+			<td><img src="widgets/LayerList/images/Road.png" class="imgSize" /></td>
+			<td>道路</td>
+			<td><label><input class="mui-switch" id="checkeBoxDL" value="1" type="checkbox" ></label></td>
+		</tr>
+		<tr>
+			<td><img src="widgets/LayerList/images/line.png" class="imgSize" /></td>
+			<td style="width: 50%;">行政界线</td>
+			<td><label><input class="mui-switch" id="checkeBoxXZJX" value="1" type="checkbox" ></label></td>
+		</tr>
+		</table>
+	
+	</div>
+</div>
